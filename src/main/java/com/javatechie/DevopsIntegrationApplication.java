@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class DevopsIntegrationApplication {
+public class Devopsautomation1Application {
 
 	@GetMapping
 	public String message(){
@@ -15,7 +15,7 @@ public class DevopsIntegrationApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(DevopsIntegrationApplication.class, args);
+		SpringApplication.run(Devopsautomation1Application.class, args);
 	}
 
 }

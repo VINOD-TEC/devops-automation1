@@ -7,13 +7,13 @@ pipeline {
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/VINOD-TEC/devops-automation1']]])
-                bat 'mvn clean install'
+                sh 'mvn clean install'
             }
         }
         stage('Build docker image'){
             steps{
                 script{
-                    bat 'docker build -t VINOD-TEC/devops-automation1 .'
+                    sh 'docker build -t VINOD-TEC/devops-automation1 .'
                 }
             }
         }
@@ -21,10 +21,10 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   bat 'docker login -u VINOD-TEC -p ${dockerhubpwd}'
+                   sh 'docker login -u VINOD-TEC -p ${dockerhubpwd}'
 
 }
-                   bat 'docker push VINOD-TEC/devops-automation1'
+                   sh 'docker push VINOD-TEC/devops-automation1'
                 }
             }
         }
